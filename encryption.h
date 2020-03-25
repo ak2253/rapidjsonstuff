@@ -1,3 +1,4 @@
+#include "otherFunctions.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -25,17 +26,6 @@ unsigned long long DHK(unsigned long long a, unsigned long long b, unsigned long
         cout<<"Oh No! there seems to be a problem"<<endl;
     
     return key1;
-}
-
-unsigned long long gcd(unsigned long long a, unsigned long long b) {
-    unsigned long long temp;
-    while(true) {
-        temp=fmodl(a,b);
-        if(temp==0)
-            return b;
-        a=b;
-        b=temp;
-    }
 }
 
 unsigned long long RSA(unsigned long long p,unsigned long long q,unsigned long long m) {
