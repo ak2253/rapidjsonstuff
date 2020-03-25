@@ -1,0 +1,5 @@
+{
+    "gcd":"unsigned long long a, unsigned long long b",
+    "MysteryCrypto":"unsigned long long a, unsigned long long b, unsigned long long g, unsigned long long p",
+    "MysteryCrypto":"unsigned long long p, unsigned long long q, unsigned long long m"
+}
