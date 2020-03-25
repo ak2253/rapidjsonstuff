@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
         cout<<"file "<<argv[1]<<" is not found"<<endl;
         return 0;
     }
-    FileReadStream frs(file,buffer,sizeof(buffer));
+    FileReadStream frs(file,buffer,sizeof(buffer)); //find way to get file size
     Document document;
     document.ParseStream<0, UTF8<>, FileReadStream>(frs);
 
