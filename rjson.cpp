@@ -1,5 +1,6 @@
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
+#include "otherFunctions.h"
 #include <string>
 #include <vector>
 #include <cstdio>
@@ -40,7 +41,6 @@ int main(int argc, char *argv[]) {
         cout<<"Too many arguments"<<endl;
         return 0;
     }
-    //for manual testing
     //const char json[] = "{\"gcd\":\"unsigned long long a, unsigned long long b\",\"MysteryCrypto\":\"unsigned long long a, unsigned long long b, unsigned long long g, unsigned long long p\",\"MysteryCrypto\":\"unsigned long long p, unsigned long long q, unsigned long long m\"}";
     char buffer[1024];
     FILE *file=fopen(argv[1],"r");
@@ -48,60 +48,59 @@ int main(int argc, char *argv[]) {
         cout<<"file "<<argv[1]<<" is not found"<<endl;
         return 0;
     }
-    FileReadStream frs(file,buffer,sizeof(buffer)); //find way to get file size
+    FileReadStream frs(file,buffer,sizeof(buffer));
     Document document;
     document.ParseStream<0, UTF8<>, FileReadStream>(frs);
 
     Merge(document,document.GetAllocator());
     string line;
-    string word;
     string name;
+    string parse;
+    string delimiter1="(";
+    string delimiter2=",";
+    string delimiter3=")";
     vector<string> para;
-    int step=0;
+    size_t index=0;
+    
     getline(cin,line);
-    for(char& c:line) {
-        if(c=='('&&step==0) {
-            name=word;
-            word="";
-            step+=1;
-            continue;
-        }
-        if(c==','&&step==1) {
-            para.push_back(word);
-            word="";
-            continue;
-        }
-        if(c==')'&&step==1) {
-            para.push_back(word);
-            step+=1;
-        }   
-        word+=c;
-    }
-    if(step!=2) {
-        cout<<"Invalid input"<<endl;
+    if((index=line.find(delimiter1))==std::string::npos) {
+        cout<<"invalid input"<<endl;
         return 0;
     }
+    parse=line.substr(0,index);
+    line.erase(0,index+delimiter1.length());
+    name=trim(parse);
+    while((index=line.find(delimiter2))!=std::string::npos) {
+        parse=line.substr(0,index);
+        line.erase(0,index+delimiter2.length());
+        para.push_back(trim(parse));
+    }
+    if((index=line.find(delimiter3))==std::string::npos) {
+        cout<<"invalid input"<<endl;
+        return 0;
+    }
+    parse=line.substr(0,index);
+    para.push_back(trim(parse));
+
     for(Value::MemberIterator key=document.MemberBegin();key!=document.MemberEnd();key++) {
         if(key->name.GetString()==name) {
             if(key->value.IsArray()) {
                 for(auto& val:key->value.GetArray()) {
-                    string arg;
-                    int index=0;
+                    index=0;
+                    int i=0;
                     string temp=val.GetString();
-                    for(int i=0;i<temp.size();i++) {
-                        if(temp[i]==','&&arg==para[index]) {
-                            arg="";
-                            index+=1;
+                    while((index=temp.find(delimiter2))!=std::string::npos) {
+                        string parse=temp.substr(0,index);
+                        parse=trim(parse);
+                        temp.erase(0,index+delimiter2.length());
+                        if(parse==para[i]) {
+                            i++;
                             continue;
                         }
-                        if(temp[i]==' ') {
-                            arg="";
-                            continue;
-                        }
-                        arg+=temp[i];
                     }
-                    if(arg==para[index]&&(index+1)==para.size())
+                    if(i+1==para.size()&&trim(temp)==para[i]) {
                         cout<<key->name.GetString()<<" : "<<val.GetString()<<endl;
+                    }
                 }
             }
             else {
@@ -109,7 +108,6 @@ int main(int argc, char *argv[]) {
             }
         }
     }
-    //list out contents in documents
     /*for(Value::MemberIterator key=document.MemberBegin();key!=document.MemberEnd();key++) {
         if(key->value.IsArray()) {
             for(auto& val:key->value.GetArray())
