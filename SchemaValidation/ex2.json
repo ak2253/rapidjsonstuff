@@ -1,0 +1,27 @@
+[
+    {
+        "Scheme Name" : "gcd",
+        "Return Type" : "unsigned long long",
+        "Parameters" : ["unsigned long long a","unsigned long long b"],
+        "Inheritance" : "otherFunctions.h",
+        "Other Schemes" : ["encryption.h"]
+    },
+    {
+        "Scheme Name" : "MysteryCrypto",
+        "Return Type" : "unsigned long long",
+        "Parameters" : ["unsigned long long a","unsigned long long b","unsigned long long g","unsigned long long p"],
+        "Inheritance" : "encryption.h"
+    },
+    {
+        "Scheme Name" : "MysteryCrypto",
+        "Return Type" : "unsigned long long",
+        "Parameters" : ["unsigned long long p","unsigned long long q","unsigned long long m"],
+        "Inheritance" : "encryption.h"
+    },
+    {
+        "Scheme Name" : "MysteryCrypto",
+        "Return Type" : "unsigned long long",
+        "Parameters" : ["unsigned long long a","unsigned long long b"],
+        "Inheritance" : "encryption.h"
+    }
+]
