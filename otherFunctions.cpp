@@ -19,3 +19,14 @@ string trim(const string& s) {
     size_t end=s.find_last_not_of(' ');
     return s.substr(start,(end-start+1));
 }
+
+string getVariable(string& s) {
+    string delimiter=" ";
+    size_t index=0;
+    string parse;
+    while((index=s.find(delimiter))!=std::string::npos) {
+        parse=s.substr(0,index);
+        s.erase(0,index+delimiter.length());
+    }
+    return s;
+}
