@@ -1,0 +1,6 @@
+To use this demo, run rjson.cpp with all of the respective files in the same namespace. Pass in a .json as a parameter. You will then be able to type.
+
+Type the name of the function you are using and the parameters associated with it. (Do not, this is case sensitive, but we plan on having something in the future to account for that)
+
+You should get an output similar to:
+
