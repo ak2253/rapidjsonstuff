@@ -1,0 +1,66 @@
+{
+    "rlwe": {
+        "schemepath": "scheme/rlwe.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "stst": {
+        "schemepath": "scheme/stst/stst.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "bgv": {
+        "schemepath": "scheme/bgv/bgv.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "bfv": {
+        "schemepath": "scheme/bfv/bfv.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "bfvrns": {
+        "schemepath": "scheme/bfvrns/bfvrns.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "bfvrnsB": {
+        "schemepath": "scheme/bfvrnsb/bfvrnsB.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "ckks": {
+        "schemepath": "scheme/ckks/ckks.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    },
+    "nullscheme": {
+        "schemepath": "scheme/null/nullscheme.h",
+        "parameter": [
+            "To be decided 1",
+            "To be decided 2"
+        ],
+        "validation": false
+    }
+}
