@@ -1,8 +1,8 @@
 #include "rapidjson/document.h"
 #include "rapidjson/filereadstream.h"
-#include "otherFunctions.h"
-#include <string>
-#include <vector>
+#include "otherFunctions.h" 
+#include <string> 
+#include <vector>     
 #include <cstdio>
 #include <iostream>
 
