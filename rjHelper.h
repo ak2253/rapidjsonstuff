@@ -1,11 +1,13 @@
 #include "rapidjson/document.h"
-//#include "rapidjson/filereadstream.h"
+#include "rapidjson/filereadstream.h"
 #include "rapidjson/filewritestream.h"
 
 #include <rapidjson/writer.h>
 #include <rapidjson/prettywriter.h>
 #include <cstdio>
 #include <iostream>
+#include <vector>
+#include <cstdio>
 
 using namespace rapidjson;
 //TODO: make sure before editing the json file that the file contains at least {}
