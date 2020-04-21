@@ -1,66 +1,95 @@
 {
-    "rlwe": {
-        "schemepath": "scheme/rlwe.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "stst": {
-        "schemepath": "scheme/stst/stst.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "bgv": {
-        "schemepath": "scheme/bgv/bgv.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "bfv": {
-        "schemepath": "scheme/bfv/bfv.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "bfvrns": {
-        "schemepath": "scheme/bfvrns/bfvrns.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "bfvrnsB": {
-        "schemepath": "scheme/bfvrnsb/bfvrnsB.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "ckks": {
-        "schemepath": "scheme/ckks/ckks.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
-    },
-    "nullscheme": {
-        "schemepath": "scheme/null/nullscheme.h",
-        "parameter": [
-            "To be decided 1",
-            "To be decided 2"
-        ],
-        "validation": false
+    "id": "http://palisade.njit.edu/schemas/config.json",
+    "$schema": "http://json-schema.org/schema#",
+    "title": "All Schemes",
+    "description": "Information about all scheme in PASLISADE",
+    "type": "object",
+    "properties": {
+        "stst": {
+            "schemepath": "scheme/stst/stst.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersStehleSteinfeld &rhs",
+                "shared_ptr<typename Element::Params> params\nconst PlaintextModulus &plaintextModulus\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nfloat distributionParmStst\nint depth = 1",
+                "shared_ptr<typename Element::Params> params\nEncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nfloat distributionParmStst\nint depth = 1",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "bgv": {
+            "schemepath": "scheme/bgv/bgv.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersBGV &rhs",
+                "shared_ptr<typename Element::Params> params\nconst PlaintextModulus &plaintextModulus\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode\nint depth = 1",
+                "shared_ptr<typename Element::Params> params\nEncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode\nint depth = 1",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "bfv": {
+            "schemepath": "scheme/bfv/bfv.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersBFV &rhs",
+                "shared_ptr<typename Element::Params> params,const PlaintextModulus &plaintextModulus \nfloat distributionParameter \nfloat assuranceMeasure \nfloat securityLevel \nusint relinWindow\nconst typename Element::Integer &delta = typename Element::Integer(0",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nconst typename Element::Integer &delta = typename Element::Integer(0",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nSecurityLevel securityLevel\nusint relinWindow\nconst typename Element::Integer &delta = typename Element::Integer(0",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "bfvrns": {
+            "schemepath": "scheme/bfvrns/bfvrns.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersBFVrns &rhs",
+                "shared_ptr<typename Element::Params> params,const PlaintextModulus &plaintextModulus\nfloat distributionParameter \nfloat assuranceMeasure \nfloat securityLevel \nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nSecurityLevel securityLevel\nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "bfvrnsB": {
+            "schemepath": "scheme/bfvrnsb/bfvrnsB.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersBFVrnsB &rhs",
+                "shared_ptr<typename Element::Params> params,const PlaintextModulus &plaintextModulus\nfloat distributionParameter \nfloat assuranceMeasure \nfloat securityLevel \nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "shared_ptr<typename Element::Params> params,EncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nSecurityLevel securityLevel\nusint relinWindow\nMODE mode = RLWE\nint depth = 1\nint maxDepth = 2",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "ckks": {
+            "schemepath": "scheme/ckks/ckks.h",
+            "requiredParameter": [
+                "",
+                "const LPCryptoParametersCKKS &rhs",
+                "shared_ptr<typename Element::Params> params\nconst PlaintextModulus &plaintextModulus\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode\nint depth = 1\nint maxDepth = 1\nKeySwitchTechnique ksTech = BV\nRescalingTechnique rsTech = APPROXRESCALE",
+                "shared_ptr<typename Element::Params> params\nEncodingParams encodingParams\nfloat distributionParameter\nfloat assuranceMeasure\nfloat securityLevel\nusint relinWindow\nMODE mode\nint depth = 1\nint maxDepth = 1\nKeySwitchTechnique ksTech = BV\nRescalingTechnique rsTech = APPROXRESCALE",
+                "os"
+            ],
+            "schema": [],
+            "validation": false
+        },
+        "nullscheme": {
+            "schemepath": "scheme/null/nullscheme.h",
+            "requiredParameter": [
+                "",
+                "const shared_ptr<typename Element::Params> ep, const PlaintextModulus &plaintextModulus",
+                "shared_ptr<typename Element::Params> ep, EncodingParams encodingParams",
+                "const LPCryptoParametersNull& rhs"
+            ],
+            "schema": [],
+            "validation": false
+        }
     }
 }
