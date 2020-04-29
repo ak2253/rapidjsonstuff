@@ -1,0 +1,58 @@
+{
+    "id": "",
+    "$schema": "http://json-schema.org/schema#",
+    "title": "Schema Validator",
+    "description": "Validates Schema",
+    "type": "object",
+    "Properties": {
+        "Stehle-Steinfeld": {
+            "required": [
+                "params",
+                "Encode",
+                "distributionParameter",
+                "relinWindow",
+                "distributionParmStst"
+            ],
+            "params": {
+                "type": "shared_ptr<typename Element::Params>"
+            },
+            "Encode": [
+                {
+                    "encodingParams": {
+                        "type": "EncodingParams"
+                    }
+                },
+                {
+                    "PlaintextModulus": {
+                        "type": "plaintextModulus"
+                    }
+                }
+            ],
+            "distributionParameter": {
+                "type": "string"
+            },
+            "assuranceMeasure = 9": {
+                "type": "string"
+            },
+            "securityLevel = 1.006": {
+                "type": "string"
+            },
+            "relinWindow": {
+                "type": "string"
+            },
+            "distributionParmStst": {
+                "type": "string"
+            },
+            "depth = 1": {
+                "type": "string"
+            }
+        }
+    },
+    "oneOf": [
+        {
+            "required": [
+                "Stehle-Steinfeld"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "id": "",
+    "$schema": "http://json-schema.org/schema#",
+    "title": "Stehle-Steinfeld",
+    "description": "",
+    "type": "object",
+    "Stehle-Steinfeld": {
+        "params": {
+            "type": "shared_ptr<typename Element::Params>"
+        },
+        "Encode": [
+            {
+                "encodingParams": {
+                    "type": "EncodingParams"
+                }
+            },
+            {
+                "PlaintextModulus": {
+                    "type": "plaintextModulus"
+                }
+            } 
+        ],
+        "distributionParameter": {
+            "type": "float"
+        },
+        "assuranceMeasure = 9": {
+            "type": "float"
+        },
+        "securityLevel = 1.006": {
+            "type": "float"
+        },
+        "relinWindow": {
+            "type": "usint"
+        },
+        "distributionParmStst": {
+            "type": "float"
+        },
+        "depth = 1": {
+            "type": "int"
+        }
+    }
+}
