@@ -4,6 +4,13 @@
     "title": "Stehle-Steinfeld",
     "description": "",
     "type": "object",
+    "required": [
+        "params",
+        "Encode",
+        "distributionParameter",
+        "relinWindow",
+        "distributionParmStst"
+    ],
     "Stehle-Steinfeld": {
         "params": {
             "type": "shared_ptr<typename Element::Params>"
@@ -15,8 +22,8 @@
                 }
             },
             {
-                "PlaintextModulus": {
-                    "type": "plaintextModulus"
+                "plaintextModulus": {
+                    "type": "const PlaintextModulus"
                 }
             } 
         ],

@@ -23,8 +23,8 @@
                     }
                 },
                 {
-                    "PlaintextModulus": {
-                        "type": "plaintextModulus"
+                    "plaintextModulus": {
+                        "type": "const PlaintextModulus"
                     }
                 }
             ],

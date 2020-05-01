@@ -104,7 +104,6 @@ bool checkParams(string parameters,vector<string> path) {
 	vector<string> params;
 	while((index=tempstr.find(delimiter[0]))!=std::string::npos) {
 		token=trim(tempstr.substr(0,index));
-		cout<<token<<endl;
 		while((whindex=token.find(delimiter[1]))!=std::string::npos) {
 			if(token[whindex+delimiter[1].length()]=='=')					//TODO:: find a better solution for default
 				break;
@@ -127,7 +126,7 @@ bool checkParams(string parameters,vector<string> path) {
     for(vector<string>::iterator it= path.begin(); it !=path.end();it++) {
 		i=0;
 		FILE* file=fopen(it->c_str(), "r");
-		cout<<"parsing "<<*it<<endl;
+		cout<<"checking parameters with "<<*it<<endl;
 		if(!file) {
 			std::cout<<"Error file "<<*it<<" not found"<<endl;
 			fclose(file);
@@ -142,11 +141,10 @@ bool checkParams(string parameters,vector<string> path) {
 			fclose(file);
 			string SchemaName=doc["title"].GetString();
 			auto& propertyname=doc[SchemaName.c_str()];
-			cout<<propertyname["params"]["type"].GetString()<<endl;
 			for(Value::ConstMemberIterator iter=propertyname.MemberBegin();iter!=propertyname.MemberEnd();iter++) {
 				string var=iter->name.GetString();
-				cout<<var<<endl;
-				cout<<params.at(i)<<endl;
+				//cout<<var<<endl;
+				//cout<<params.at(i)<<endl;
 				if(var.compare(params.at(i))==0) {
 					string dtype=iter->value["type"].GetString();
 					if(!dtype.compare(params.at(i+1))==0) {
@@ -163,7 +161,6 @@ bool checkParams(string parameters,vector<string> path) {
 							string data2=diter2->value["type"].GetString();
 							if((data1.compare(params.at(i))==0&&data2.compare(params.at(i+1))==0)) {
 								flag=true;
-								i+=2;
 								continue;
 								break;
 							}
