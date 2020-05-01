@@ -7,9 +7,9 @@
     "required": [
         "params",
         "Encode",
-        "distributionParameter",
         "relinWindow",
-        "distributionParmStst"
+        "stDev",
+        "stDevStSt"
     ],
     "Stehle-Steinfeld": {
         "params": {
@@ -22,28 +22,31 @@
                 }
             },
             {
-                "plaintextModulus": {
+                "plaintextmodulus": {
                     "type": "const PlaintextModulus"
                 }
             } 
         ],
-        "distributionParameter": {
-            "type": "float"
-        },
-        "assuranceMeasure = 9": {
-            "type": "float"
-        },
-        "securityLevel = 1.006": {
-            "type": "float"
-        },
         "relinWindow": {
             "type": "usint"
         },
-        "distributionParmStst": {
+        "stDev": {
             "type": "float"
         },
-        "depth = 1": {
-            "type": "int"
+        "stDevStSt": {
+            "type": "float"
+        },
+        "depth": {
+            "type": "int",
+            "default" : 1
+        },
+        "assuranceMeasure": {
+            "type": "int",
+            "default" : 9
+        },
+        "securityLevel": {
+            "type": "float",
+            "default" : 1.006
         }
     }
 }

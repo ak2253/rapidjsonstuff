@@ -9,9 +9,9 @@
             "required": [
                 "params",
                 "Encode",
-                "distributionParameter",
                 "relinWindow",
-                "distributionParmStst"
+                "stDev",
+                "stDevStSt"
             ],
             "params": {
                 "type": "shared_ptr<typename Element::Params>"
@@ -23,28 +23,31 @@
                     }
                 },
                 {
-                    "plaintextModulus": {
+                    "plaintextmodulus": {
                         "type": "const PlaintextModulus"
                     }
                 }
             ],
-            "distributionParameter": {
-                "type": "string"
-            },
-            "assuranceMeasure = 9": {
-                "type": "string"
-            },
-            "securityLevel = 1.006": {
-                "type": "string"
-            },
             "relinWindow": {
                 "type": "string"
             },
-            "distributionParmStst": {
+            "stDev": {
                 "type": "string"
             },
-            "depth = 1": {
+            "stDevStSt": {
                 "type": "string"
+            },
+            "depth": {
+                "type": "string",
+                "default" : "integer"
+            },
+            "assuranceMeasure": {
+                "type": "string",
+                "default" : "integer"
+            },
+            "securityLevel": {
+                "type": "string",
+                "default" : "float"
             }
         }
     },
