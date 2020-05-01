@@ -63,8 +63,6 @@ bool validate_Schema(vector<string> schemapath, string schemaValidator) {
 
 	cout<<"Converted to schema"<<endl;
 
-	
-
 	for(vector<string>::iterator it = schemapath.begin(); it != schemapath.end(); ++it){
 		cout<<"Validating "<<*it<<endl;
 		FILE *fp = fopen(it->c_str(), "r");
@@ -90,7 +88,6 @@ bool validate_Schema(vector<string> schemapath, string schemaValidator) {
 			cout << "Invalid document " << sb.GetString() << endl;
 			return false;
 		}
-		// end of loop
 	}
     return true;
 }
@@ -152,11 +149,13 @@ bool checkParams(string parameters,vector<string> path) {
 				cout<<params.at(i)<<endl;
 				if(var.compare(params.at(i))==0) {
 					string dtype=iter->value["type"].GetString();
-					if(!dtype.compare(params.at(i+1))==0)
+					if(!dtype.compare(params.at(i+1))==0) {
+						cout<<"Expected datatype "<<dtype<<" but received "<<params.at(i+1)<<"in "<<params.at(i+1)<<" "<<params.at(i)<<endl;
 						break;
+					}
 				}
 				else if(var.compare("Encode")==0) {
-					bool flag=true;
+					bool flag=false;
 					for(Value::ConstValueIterator diter=iter->value.Begin();diter!=iter->value.End();diter++) {
 						const Value& texttype = *diter;
 						for (Value::ConstMemberIterator diter2=texttype.MemberBegin();diter2!=texttype.MemberEnd();diter2++) {
@@ -170,12 +169,16 @@ bool checkParams(string parameters,vector<string> path) {
 							}
     					}
 					}
-					cout<<"flag"<<flag<<endl;
-					if(flag==false)
+					if(flag==false) {
+						cout<<"Expected to recieve one of two datatype for Encode but recieved "<<params.at(i+1)<<" "<<params.at(i)<<endl; 
 						break;
+					}
 				}
-				else
+				//TODO:: add another case if default parameters exist
+				else {
+					cout<<"Expected parameter "<<var<<" but received "<<params.at(i)<<"in "<<params.at(i+1)<<" "<<params.at(i)<<endl;
 					break;
+				}
 				i+=2;
 			}
 		}
@@ -194,7 +197,6 @@ bool check(string parameters) {
 	}
 	return false;
 }
-//vector to json or string to json
 int main() {
     //BFV
     //NULL
