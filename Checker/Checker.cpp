@@ -145,14 +145,7 @@ bool checkParams(string parameters,vector<string> path) {
 				string var=iter->name.GetString();
 				//cout<<var<<endl;
 				//cout<<params.at(i)<<endl;
-				if(var.compare(params.at(i))==0) {
-					string dtype=iter->value["type"].GetString();
-					if(!dtype.compare(params.at(i+1))==0) {
-						cout<<"Expected datatype "<<dtype<<" but received "<<params.at(i+1)<<"in "<<params.at(i+1)<<" "<<params.at(i)<<endl;
-						break;
-					}
-				}
-				else if(var.compare("Encode")==0) {
+				if(var.compare("Encode")==0) {
 					bool flag=false;
 					for(Value::ConstValueIterator diter=iter->value.Begin();diter!=iter->value.End();diter++) {
 						const Value& texttype = *diter;
@@ -171,7 +164,47 @@ bool checkParams(string parameters,vector<string> path) {
 						break;
 					}
 				}
-				//TODO:: add another case if default parameters exist
+				else if(iter->value.FindMember("default")!=iter->value.MemberEnd()) {
+					if(i==params.size()) {
+						return true;
+					}
+					if(params.at(i).find("=")!=std::string::npos) {
+						string Varparam=trim(params.at(i).substr(0,params.at(i).find("=")));
+						string defaultValue=trim(params.at(i).substr(params.at(i).find("=")+1,params.at(i).size()));
+						cout<<Varparam<<" "<<defaultValue<<endl;
+						string defDataType=iter->value["type"].GetString();
+						if(var.compare(Varparam)==0||defDataType.compare(params.at(i+1))==0) {
+							if(defDataType.compare("usint")==0||defDataType.compare("int")==0||defDataType.compare("float")==0) {
+								string::const_iterator numiter=defaultValue.begin();
+								bool nondigit=false;
+								bool decimal=false;
+								while (numiter!=defaultValue.end()) {
+									if(!isdigit(*numiter)) {
+										if(decimal==false&&*numiter=='.') {
+											decimal=true;
+											++numiter;
+											continue;
+										}
+										nondigit=true;
+										break;
+									}
+									++numiter;
+								}
+								if(nondigit) {
+									cout<<"Expected variable of type "<<defDataType<<" but received "<<defaultValue<<endl;
+									break;
+								}
+							}
+						}
+					}
+				}
+				else if(var.compare(params.at(i))==0) {
+					string dtype=iter->value["type"].GetString();
+					if(!dtype.compare(params.at(i+1))==0) {
+						cout<<"Expected datatype "<<dtype<<" but received "<<params.at(i+1)<<"in "<<params.at(i+1)<<" "<<params.at(i)<<endl;
+						break;
+					}
+				}
 				else {
 					cout<<"Expected parameter "<<var<<" but received "<<params.at(i)<<"in "<<params.at(i+1)<<" "<<params.at(i)<<endl;
 					break;
@@ -200,7 +233,7 @@ int main() {
     string str2="unsigned int m, const PlaintextModulus ptModulus";
     string str3="shared_ptr<typename Element::Params> params, const PlaintextModulus &plaintextModulus, float distributionParameter, float assuranceMeasure, float securityLevel, usint relinWindow, float distributionParmStst, int depth = 1";
     //TODO:: check order with other groups
-	string str4="shared_ptr<typename Element::Params> params, const PlaintextModulus plaintextModulus, float distributionParameter, float assuranceMeasure = 9, float securityLevel = 1.006, usint relinWindow, float distributionParmStst, int depth = 1";
+	string str4="shared_ptr<typename Element::Params> params, const PlaintextModulus plaintextmodulus, usint relinWindow, float stDev, float stDevStSt, int depth = 1, int assuranceMeasure = 9, float securityLevel = 1.006";
 	string path1="stst.json";
     string path2="Validate.json";
     if(check(str4)) {
