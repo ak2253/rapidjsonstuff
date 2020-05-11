@@ -1,8 +1,7 @@
-To use this demo clone the respository. Then compile and run SchemeReader.cpp.
-Pictures for the demo will be located in Demo.
+To use this demo clone the respository. Then compile and run testcase.cpp.
 
 Note: 
-    Make sure to look at the files for any to-dos.
-    Ignore all contents in otherfolder and SchemaValidation.
-    Make sure to change the path for allscheme.h before running SchemeReader.cpp to your respective path.
-    If deleting content in allscheme.json, make sure to leave at least {} in it or else a core dump error will occur. (we will fix this edge case soon).
+    Ignore all contents in Demo, otherfolder and SchemaValidation.
+    The only folder that should be used is Checker and it should contains 5 total files (Checker.h, HelperFuncts.h, Validate.json, stst.json and testcase.cpp).
+TODO:
+    Make sure to look at the file comments for any to-dos.
